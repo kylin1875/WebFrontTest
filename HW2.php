@@ -34,7 +34,7 @@ setInterval(draw,10);
 <html>
 <head>
 <meta http-equiv="Content-Type" conte
-<!DOCTYPE html>nt="text/html; charset=utf-8" />
+<!DOCTYPE html>
 <title>HTML5 Bouncing Ball</title>
 <style type="text/css">
 <!--
