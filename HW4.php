@@ -120,7 +120,8 @@ td {
 		<input type="color" id="user_color" name="user_color" pattern="^#(?:[0-9a-fA-F]{3}){1,2}$" class="text" required/>  
 		<br/>  
 		<label for="user_number">Number：</label>  
-		<input type="number" id="user_number" name="user_number" pattern="\d*" min="1" max="130" title="Numbers only" required/>  
+		<input type="number" id="user_number" name="user_number" pattern="\d*" min="1" max="130" title="Numbers only" required/>
+		<p>Numbers can only between 1 to 130</p>  
 		<br/>  
 		<input type="button" onclick="save()" value="SAVE"/>  
 	</div>  
