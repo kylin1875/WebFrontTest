@@ -121,12 +121,13 @@ td {
 		<br/>  
 		<label for="user_number">Number：</label>  
 		<input type="number" id="user_number" name="user_number" pattern="\d*" min="1" max="130" title="Numbers only" required/>
-		<p>Numbers can only between 1 to 130</p>  
+		
 		<br/>  
 		<input type="button" onclick="save()" value="SAVE"/>  
 	</div>  
 	<br/>  
 	<div id="list">  
 	</div>  
+	<p>Numbers can only between 1 to 130</p>  
 </body>  
 </html>  
