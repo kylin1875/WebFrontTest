@@ -26,7 +26,7 @@ function onSuccess(tx,rs){
 function onError(tx,error){  
 	alert("Failed，error information："+ error.message);  
 }  
-//将所有存储在sqlLite数据库中的联系人全部取出来  
+//将所有存储在sqlLite数据库中的全部取出来  
 function loadAll(){  
 	var list = document.getElementById("list");  
 	db.transaction(function(tx){  
