@@ -1,26 +1,26 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<title></title>
+	<head>Midterm Exam
 	</head>
+	<script>
+
+	</script>
 	<body>
-		<TABLE ALIGN=ABSLEFT BORDER=1 CELLSPACING=1 CELLPADDING=1 WIDTH=600	 height=200>
+		<table border="1"  height="100">
 			
 		<tr>
-		<th colspan=3 rowspan=1>x</th>
+		<th width="300" colspan=3 rowspan=1 id="0">x</th>
 		</tr>
 		
 		<tr>
-		<th colspan=2 rowspan=1>y</th>
-		<th colspan=1 rowspan=1>z</th>
+		<th width="100" colspan=1 rowspan=1>y</th>
+		<th width="200" colspan=2 rowspan=1>z</th>
 		</tr>		
 		
 		<tr>
-		<th colspan=3 rowspan=1>m</th>
+		<th width="300" colspan=3 rowspan=1>m</th>
 		</tr>
 		
 		</table>
-		
 	</body>
 </html>
