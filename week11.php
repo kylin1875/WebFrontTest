@@ -20,8 +20,8 @@
 	var height = window.innerHeight;
 	alert("width is: " + width + "\nheight is: " + height);
 </script>
-	<iframe src="w3schools.html" height="800" scrolling="no" width="300"></iframe>
-	<iframe src="w3schools.html" height="600" scrolling="no" width="400"></iframe>
-	<iframe src="w3schools.html" height="600" scrolling="no" width="500"></iframe>
+	<iframe src="w3schools.php" height="800" scrolling="no" width="300"></iframe>
+	<iframe src="w3schools.php" height="600" scrolling="no" width="400"></iframe>
+	<iframe src="w3schools.php" height="600" scrolling="no" width="500"></iframe>
 </body>
 </html>
