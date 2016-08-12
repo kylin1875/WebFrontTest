@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!-- common.css -->
+  <style>* {-webkit-tap-highlight-color: rgba(0,0,0,0);}html {-webkit-text-size-adjust: none;}body {font-family: Arial, Helvetica, sans-serif;margin: 0;color: #333;word-wrap: break-word;}h1, h2, h3, h4, h5, h6 {line-height: 1.1;}img {max-width: 100% !important;}blockquote {margin: 0;padding: 0 15px;color: #777;border-left: 4px solid #ddd;}hr {background-color: #ddd;border: 0;height: 1px;margin: 15px 0;}code {font-family: Menlo, Consolas, 'Ubuntu Mono', Monaco, 'source-code-pro', monospace;line-height: 1.4;margin: 0;padding: 0.2em 0;font-size: 85%;background-color: rgba(0,0,0,0.04);border-radius: 3px;}pre > code {margin: 0;padding: 0;font-size: 100%;word-break: normal;background: transparent;border: 0;}ol {list-style-type: decimal;}ol ol, ul ol {list-style-type: lower-latin;}ol ol ol, ul ol ol, ul ul ol, ol ul ol {list-style-type: lower-roman;}table {border-spacing: 0;border-collapse: collapse;margin-top: 0;margin-bottom: 16px;}table th {font-weight: bold;}table th, table td {padding: 6px 13px;border: 1px solid #ddd;}table tr {border-top: 1px solid #ccc;}table tr:nth-child(even) {background-color: #f8f8f8;}input[type="checkbox"] {cursor: default;margin-right: 0.5em;font-size: 13px;}.task-list-item {list-style-type: none;}.task-list-item+.task-list-item {margin-top: 3px;}.task-list-item input {float: left;margin: 0.3em 1em 0.25em -1.6em;vertical-align: middle;}#tag-field {margin: 8px 2px 10px;}#tag-field .tag {display: inline-block;background: #cadff3;border-radius: 4px;padding: 1px 8px;color: black;font-size: 12px;margin-right: 10px;line-height: 1.4;}</style>
+  <!-- ace-static.css -->
+  <style>.ace_static_highlight {white-space: pre-wrap;}.ace_static_highlight .ace_gutter {width: 2em;text-align: right;padding: 0 3px 0 0;margin-right: 3px;}.ace_static_highlight.ace_show_gutter > .ace_line {padding-left: 2.6em;}.ace_static_highlight .ace_line {position: relative;}.ace_static_highlight .ace_gutter-cell {-moz-user-select: -moz-none;-khtml-user-select: none;-webkit-user-select: none;user-select: none;top: 0;bottom: 0;left: 0;position: absolute;}.ace_static_highlight .ace_gutter-cell:before {content: counter(ace_line, decimal);counter-increment: ace_line;}.ace_static_highlight {counter-reset: ace_line;}</style>
+  <style>.ace-chrome .ace_gutter {background: #ebebeb;color: #333;overflow : hidden;}.ace-chrome .ace_print-margin {width: 1px;background: #e8e8e8;}.ace-chrome {background-color: #FFFFFF;color: black;}.ace-chrome .ace_cursor {color: black;}.ace-chrome .ace_invisible {color: rgb(191, 191, 191);}.ace-chrome .ace_constant.ace_buildin {color: rgb(88, 72, 246);}.ace-chrome .ace_constant.ace_language {color: rgb(88, 92, 246);}.ace-chrome .ace_constant.ace_library {color: rgb(6, 150, 14);}.ace-chrome .ace_invalid {background-color: rgb(153, 0, 0);color: white;}.ace-chrome .ace_fold {}.ace-chrome .ace_support.ace_function {color: rgb(60, 76, 114);}.ace-chrome .ace_support.ace_constant {color: rgb(6, 150, 14);}.ace-chrome .ace_support.ace_type,.ace-chrome .ace_support.ace_class.ace-chrome .ace_support.ace_other {color: rgb(109, 121, 222);}.ace-chrome .ace_variable.ace_parameter {font-style:italic;color:#FD971F;}.ace-chrome .ace_keyword.ace_operator {color: rgb(104, 118, 135);}.ace-chrome .ace_comment {color: #236e24;}.ace-chrome .ace_comment.ace_doc {color: #236e24;}.ace-chrome .ace_comment.ace_doc.ace_tag {color: #236e24;}.ace-chrome .ace_constant.ace_numeric {color: rgb(0, 0, 205);}.ace-chrome .ace_variable {color: rgb(49, 132, 149);}.ace-chrome .ace_xml-pe {color: rgb(104, 104, 91);}.ace-chrome .ace_entity.ace_name.ace_function {color: #0000A2;}.ace-chrome .ace_heading {color: rgb(12, 7, 255);}.ace-chrome .ace_list {color:rgb(185, 6, 144);}.ace-chrome .ace_marker-layer .ace_selection {background: rgb(181, 213, 255);}.ace-chrome .ace_marker-layer .ace_step {background: rgb(252, 255, 0);}.ace-chrome .ace_marker-layer .ace_stack {background: rgb(164, 229, 101);}.ace-chrome .ace_marker-layer .ace_bracket {margin: -1px 0 0 -1px;border: 1px solid rgb(192, 192, 192);}.ace-chrome .ace_marker-layer .ace_active-line {background: rgba(0, 0, 0, 0.07);}.ace-chrome .ace_gutter-active-line {background-color : #dcdcdc;}.ace-chrome .ace_marker-layer .ace_selected-word {background: rgb(250, 250, 255);border: 1px solid rgb(200, 200, 250);}.ace-chrome .ace_storage,.ace-chrome .ace_keyword,.ace-chrome .ace_meta.ace_tag {color: rgb(147, 15, 128);}.ace-chrome .ace_string.ace_regex {color: rgb(255, 0, 0)}.ace-chrome .ace_string {color: #1A1AA6;}.ace-chrome .ace_entity.ace_other.ace_attribute-name {color: #994409;}.ace-chrome .ace_indent-guide {background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAACCAYAAACZgbYnAAAAE0lEQVQImWP4////f4bLly//BwAmVgd1/w11/gAAAABJRU5ErkJggg==") right repeat-y;}</style>
+  <!-- export.css -->
+  <style>
+    body{margin:0 auto;max-width:800px;line-height:1.4}
+    #nav{margin:5px 0 10px;font-size:15px}
+    #titlearea{border-bottom:1px solid #ccc;font-size:17px;padding:10px 0;}
+    #contentarea{font-size:15px;margin:16px 0}
+    .cell{outline:0;min-height:20px;margin:5px 0;padding:5px 0;}
+    .code-cell{font-family:Menlo,Consolas,'Ubuntu Mono',Monaco,'source-code-pro',monospace;font-size:12px;}
+    .latex-cell{white-space:pre-wrap;}
+  </style>
+  <!-- User CSS -->
+  <style> .text-cell {font-size: 15px;}.code-cell {font-size: 12px;}.markdown-cell {font-size: 15px;}.latex-cell {font-size: 15px;}</style>
+</head>
+<body>
+  
+  <div id="titlearea">
+    <h2>final</h2>
+  </div>
+  <div id="contentarea"><div class="cell text-cell"><div>
+		
+	
+	
+		<div class="page" title="Page 1">
+			<div class="layoutArea">
+				<h1><span style="font-size: 14pt; font-family: Calibri;">1.&nbsp;</span></h1><div class="column"><span style="font-size: 14pt; font-family: Calibri;">WhatisaJavaServletandhowdoesitwork?&nbsp;</span><br><ol>
+					</ol>
+				</div>
+			</div>
+		</div></div><span style="color: rgb(37, 37, 37); font-family: sans-serif; font-size: 14px; background-color: rgb(255, 255, 255);">A&nbsp;</span><b style="color: rgb(37, 37, 37); font-family: sans-serif; font-size: 14px;">Java servlet</b><span style="color: rgb(37, 37, 37); font-family: sans-serif; font-size: 14px; background-color: rgb(255, 255, 255);">&nbsp;is a&nbsp;</span><a href="https://en.wikipedia.org/wiki/Java_(programming_language)" title="Java (programming language)" wotsearchprocessed="true" style="text-decoration: none; color: rgb(11, 0, 128); background-image: none; font-family: sans-serif; font-size: 14px;">Java</a><span style="color: rgb(37, 37, 37); font-family: sans-serif; font-size: 14px; background-color: rgb(255, 255, 255);">&nbsp;</span><a href="https://en.wikipedia.org/wiki/Computer_program" title="Computer program" wotsearchprocessed="true" style="text-decoration: none; color: rgb(11, 0, 128); background-image: none; font-family: sans-serif; font-size: 14px;">program</a><span style="color: rgb(37, 37, 37); font-family: sans-serif; font-size: 14px; background-color: rgb(255, 255, 255);">&nbsp;that extends the capabilities of a&nbsp;</span><a href="https://en.wikipedia.org/wiki/Server_(computing)" title="Server (computing)" wotsearchprocessed="true" style="text-decoration: none; color: rgb(11, 0, 128); background-image: none; font-family: sans-serif; font-size: 14px;">server</a><span style="color: rgb(37, 37, 37); font-family: sans-serif; font-size: 14px; background-color: rgb(255, 255, 255);">.&nbsp;</span><div><font color="#252525" face="sans-serif"><span style="background-color: rgb(255, 255, 255);"><span style="font-size: 14px;">1.browser send an http&nbsp;request.</span><br></span></font><div>1.http request was distrupted by web container to load servlet class,</div><div><div><span style="color: rgb(37, 37, 37); font-family: sans-serif; font-size: 14px; background-color: rgb(255, 255, 255);">2.instantiate&nbsp;</span><font color="#252525" face="sans-serif"><span style="font-size: 14px;">servlet(constructor runs)</span></font></div></div><div><font color="#252525" face="sans-serif"><span style="font-size: 14px;">3.init()—called only once</span></font></div><div><font color="#252525" face="sans-serif"><span style="font-size: 14px;">4.servers()&nbsp;—handle client request, doGet(),doPost(),etc</span></font></div><div><font color="#252525" face="sans-serif"><span style="font-size: 14px;">5.destory()</span></font><span style="color: rgb(37, 37, 37); font-family: sans-serif; font-size: 14px;">—called only once&nbsp;</span></div></div></div><div class="cell text-cell">
+		
+	
+	
+		<div class="page" title="Page 1">
+			<div class="layoutArea">
+				<div class="column">
+					<h1><span style="font-size: 14pt;">2.&nbsp;</span></h1><p style="font-family: Calibri; font-size: 14pt;"><span style="font-size: 14pt;">Write simple codes for servlets to handle and respond to client’s requests.</span></p><p style="font-family: Calibri; font-size: 14pt;"><span style="font-size: 14pt;">&nbsp;</span><span style="color: rgb(0, 102, 102); font-size: 14px; font-family: Menlo, Monaco, Consolas, 'Courier New', Courier, monospace; background-color: rgb(235, 239, 242);">@Override</span></p><pre class="prettyprint lang-java prettyprinted" style="box-sizing: border-box; overflow: auto; font-size: 1.4rem; margin-top: 0px; margin-bottom: 1.2em; outline: 0px; vertical-align: baseline; max-width: 100%; background-color: rgb(235, 239, 242); font-family: Menlo, Monaco, Consolas, 'Courier New', Courier, monospace; line-height: 1.5em; border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; position: relative; tab-size: 4; width: 689.59375px; -webkit-font-smoothing: subpixel-antialiased; word-wrap: normal; color: rgba(0, 0, 0, 0.682353); border: none !important; padding: 10px !important;"><span class="pln" style="box-sizing: border-box; border: 0px; font-size: 14px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline; color: rgb(0, 0, 0);">	</span><span class="kwd" style="box-sizing: border-box; border: 0px; font-size: 14px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline; color: rgb(0, 0, 136);">protected</span><span class="pln" style="box-sizing: border-box; border: 0px; font-size: 14px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline; color: rgb(0, 0, 0);"> </span><span class="kwd" style="box-sizing: border-box; border: 0px; font-size: 14px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline; color: rgb(0, 0, 136);">void</span><span class="pln" style="box-sizing: border-box; border: 0px; font-size: 14px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline; color: rgb(0, 0, 0);"> doGet</span><span class="pun" style="box-sizing: border-box; border: 0px; font-size: 14px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline; color: rgb(102, 102, 0);">(</span><span class="typ" style="box-sizing: border-box; border: 0px; font-size: 14px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline; color: rgb(102, 0, 102);">HttpServletRequest</span><span class="pln" style="box-sizing: border-box; border: 0px; font-size: 14px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline; color: rgb(0, 0, 0);"> request</span><span class="pun" style="box-sizing: border-box; border: 0px; font-size: 14px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline; color: rgb(102, 102, 0);">,</span><span class="pln" style="box-sizing: border-box; border: 0px; font-size: 14px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline; color: rgb(0, 0, 0);">
+			</span><span class="typ" style="box-sizing: border-box; border: 0px; font-size: 14px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline; color: rgb(102, 0, 102);">HttpServletResponse</span><span class="pln" style="box-sizing: border-box; border: 0px; font-size: 14px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline; color: rgb(0, 0, 0);"> response</span><span class="pun" style="box-sizing: border-box; border: 0px; font-size: 14px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline; color: rgb(102, 102, 0);">)</span><span class="pln" style="box-sizing: border-box; border: 0px; font-size: 14px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline; color: rgb(0, 0, 0);"> </span><span class="kwd" style="box-sizing: border-box; border: 0px; font-size: 14px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline; color: rgb(0, 0, 136);">throws</span><span class="pln" style="box-sizing: border-box; border: 0px; font-size: 14px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline; color: rgb(0, 0, 0);"> </span><span class="typ" style="box-sizing: border-box; border: 0px; font-size: 14px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline; color: rgb(102, 0, 102);">ServletException</span><span class="pun" style="box-sizing: border-box; border: 0px; font-size: 14px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline; color: rgb(102, 102, 0);">,</span><span class="pln" style="box-sizing: border-box; border: 0px; font-size: 14px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline; color: rgb(0, 0, 0);"> </span><span class="typ" style="box-sizing: border-box; border: 0px; font-size: 14px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline; color: rgb(102, 0, 102);">IOException</span><span class="pln" style="box-sizing: border-box; border: 0px; font-size: 14px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline; color: rgb(0, 0, 0);"> </span><span class="pun" style="box-sizing: border-box; border: 0px; font-size: 14px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline; color: rgb(102, 102, 0);">{</span><span class="pln" style="box-sizing: border-box; border: 0px; font-size: 14px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline; color: rgb(0, 0, 0);">
+
+		</span><span class="com" style="box-sizing: border-box; border: 0px; font-size: 14px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline; color: rgb(136, 0, 0);">// Set response content type</span><span class="pln" style="box-sizing: border-box; border: 0px; font-size: 14px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline; color: rgb(0, 0, 0);">
+		response</span><span class="pun" style="box-sizing: border-box; border: 0px; font-size: 14px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline; color: rgb(102, 102, 0);">.</span><span class="pln" style="box-sizing: border-box; border: 0px; font-size: 14px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline; color: rgb(0, 0, 0);">setContentType</span><span class="pun" style="box-sizing: border-box; border: 0px; font-size: 14px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline; color: rgb(102, 102, 0);">(</span><span class="str" style="box-sizing: border-box; border: 0px; font-size: 14px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline; color: rgb(0, 136, 0);">"text/html"</span><span class="pun" style="box-sizing: border-box; border: 0px; font-size: 14px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline; color: rgb(102, 102, 0);">);</span><span class="pln" style="box-sizing: border-box; border: 0px; font-size: 14px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline; color: rgb(0, 0, 0);">
+
+		</span><span class="com" style="box-sizing: border-box; border: 0px; font-size: 14px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline; color: rgb(136, 0, 0);">// Actual logic goes here.</span><span class="pln" style="box-sizing: border-box; border: 0px; font-size: 14px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline; color: rgb(0, 0, 0);">
+		</span><span class="typ" style="box-sizing: border-box; border: 0px; font-size: 14px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline; color: rgb(102, 0, 102);">PrintWriter</span><span class="pln" style="box-sizing: border-box; border: 0px; font-size: 14px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline; color: rgb(0, 0, 0);"> out </span><span class="pun" style="box-sizing: border-box; border: 0px; font-size: 14px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline; color: rgb(102, 102, 0);">=</span><span class="pln" style="box-sizing: border-box; border: 0px; font-size: 14px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline; color: rgb(0, 0, 0);"> response</span><span class="pun" style="box-sizing: border-box; border: 0px; font-size: 14px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline; color: rgb(102, 102, 0);">.</span><span class="pln" style="box-sizing: border-box; border: 0px; font-size: 14px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline; color: rgb(0, 0, 0);">getWriter</span><span class="pun" style="box-sizing: border-box; border: 0px; font-size: 14px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline; color: rgb(102, 102, 0);">();</span><span class="pln" style="box-sizing: border-box; border: 0px; font-size: 14px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline; color: rgb(0, 0, 0);">
+		out</span><span class="pun" style="box-sizing: border-box; border: 0px; font-size: 14px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline; color: rgb(102, 102, 0);">.</span><span class="pln" style="box-sizing: border-box; border: 0px; font-size: 14px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline; color: rgb(0, 0, 0);">println</span><span class="pun" style="box-sizing: border-box; border: 0px; font-size: 14px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline; color: rgb(102, 102, 0);">(</span><span class="str" style="box-sizing: border-box; border: 0px; font-size: 14px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline; color: rgb(0, 136, 0);">"&lt;h1&gt;Hurray !!\n Servlet is Working!! &lt;/h1&gt;"</span><span class="pun" style="box-sizing: border-box; border: 0px; font-size: 14px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline; color: rgb(102, 102, 0);">);</span><span class="pln" style="box-sizing: border-box; border: 0px; font-size: 14px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline; color: rgb(0, 0, 0);">
+	</span><span class="pun" style="box-sizing: border-box; border: 0px; font-size: 14px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline; color: rgb(102, 102, 0);">}</span></pre><ol>
+					</ol>
+				</div>
+			</div>
+		</div></div><div class="cell text-cell"><h1><span style="font-size: 14pt;">3.&nbsp;</span></h1><p style="font-family: Calibri; font-size: 14pt;"><span style="font-size: 14pt;">Why is session tracking needed?</span></p><p style="font-family: Calibri; font-size: 14pt;"><span style="font-size: 14pt;"></span></p><div class="page" title="Page 7"><div class="section"><div class="layoutArea"><div class="column"><p style="font-family: Calibri; font-size: 14pt;"><span style="font-size: 12pt; font-family: Times-New-Roman;">To track data among requests in a session is known as session tracking.&nbsp;</span></p><p style="font-family: Calibri; font-size: 14pt;"><span style="font-size: 12pt; font-family: Times-New-Roman;">http is stateless, previous page has no realationship with next one.</span></p><p><font face="Times-New-Roman" size="3">With session tracking, comman data will be saved, and be&nbsp;identified.</font></p></div></div></div></div></div><div class="cell text-cell"></div><div class="cell text-cell">
+		
+	
+	
+		<div class="page" title="Page 1">
+			<div class="layoutArea">
+				<div class="column">
+					<h1><span style="font-size: 14pt;">4.&nbsp;</span></h1><p style="font-family: Calibri; font-size: 14pt;"><span style="font-size: 14pt;">Explain the various techniques used for session tracking.Which one is the most secure?&nbsp;</span></p><p style="font-family: Calibri; font-size: 14pt;"><span style="font-size: 14pt;"></span></p><ol style="font-family: verdana, helvetica, arial, sans-serif; color: rgb(0, 0, 0); text-align: justify;"><li style="line-height: 1.5; font-family: Verdana; margin-top: 3px;"><strong>Cookies</strong></li><li style="line-height: 1.5; font-family: Verdana; margin-top: 3px;"><strong>Hidden Form Field</strong></li><li style="line-height: 1.5; font-family: Verdana; margin-top: 3px;"><strong>URL Rewriting</strong></li><li style="line-height: 1.5; font-family: Verdana; margin-top: 3px;"><strong>HttpSession</strong></li></ol><ul><li><font color="#000000" face="Verdana"><b>httpSession.</b></font></li><li><font color="#000000" face="Verdana"><b>create session object is the most secure way to do it.</b></font></li></ul><ol><li>
+						</li>
+					</ol>
+				</div>
+			</div>
+		</div></div><div class="cell text-cell">
+		
+	
+	
+		<div class="page" title="Page 1">
+			<div class="layoutArea">
+				<div class="column">
+					<h1><span style="font-size: 14pt;">5.&nbsp;</span></h1><p style="font-family: Calibri; font-size: 14pt;"><span style="font-size: 14pt;">What is JSP? How is it related to servlets?</span></p><p style="font-family: Calibri; font-size: 14pt;"><span style="font-size: 14pt;">JSP: javaserver page - java in html with tags</span></p><p style="font-family: Calibri; font-size: 14pt;"><span style="font-size: 14pt;"><span style="color: rgb(36, 39, 41); font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; font-size: 15px; background-color: rgb(255, 255, 255);">JSP are translated to Servlets when the page is accessed for the first time.</span></span></p><ol>
+					</ol>
+				</div>
+			</div>
+		</div></div><div class="cell text-cell">
+		
+	
+	
+		<div class="page" title="Page 1">
+			<div class="layoutArea">
+				<div class="column">
+					<ol>
+						<li style="font-size: 14.000000pt; font-family: 'Calibri'">
+							<p></p>
+						</li></ol><h1><span style="font-size: 14pt;">6.&nbsp;</span></h1><p style="font-family: Calibri; font-size: 14pt;"><span style="font-size: 14pt;">What are JSP directives and implicit objects?&nbsp;</span></p><p style="font-family: Calibri; font-size: 14pt;">JSP directives provide directions and instructions to the container, telling it how to handle certain aspects of JSP processing.<span style="font-size: 14pt;"><br></span></p><p style="font-family: Calibri; font-size: 14pt;"><span style="color: rgb(0, 0, 0); font-family: Verdana, Geneva, Tahoma, Arial, Helvetica, sans-serif; font-size: 15px; text-align: justify; background-color: rgb(255, 255, 255);">JSP Implicit Objects are the Java objects that the JSP Container makes available to developers in each page and developer can call them directly without being explicitly declared. JSP Implicit Objects are also called pre-defined variables.</span><span style="font-size: 14pt;"><br></span></p><ol>
+					</ol>
+				</div>
+			</div>
+		</div></div><div class="cell text-cell"><h1>7.&nbsp;</h1><div><span style="font-family: Calibri; font-size: 14pt;">Practice writing simple JSP code segments.&nbsp;</span><div class="page" title="Page 1"><div class="layoutArea"><div class="column"><ol>
+					</ol>
+				</div>
+			</div>
+		</div></div><div><pre style="margin-top: 0px; margin-bottom: 0px; padding: 5px 10px; font-family: Consolas, 'DejaVu Sans Mono', 'Lucida Console', 'Courier New', Courier, monospace; font-size: 14px; border: 2px solid rgb(248, 248, 248); line-height: 18.899999618530273px; color: rgb(0, 0, 0);"><span class="color-new" style="margin: 0px; padding: 0px; color: rgb(227, 27, 35);">&lt;%@page language="java" contentType="text/html" pageEncoding="UTF-8" %&gt;</span>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+   &lt;meta http-equiv="Content-Type" content="text/html; charset=UTF-8"&gt;
+   &lt;title&gt;First JSP&lt;/title&gt;
+&lt;/head&gt;
+   
+&lt;body&gt;
+   <span class="color-new" style="margin: 0px; padding: 0px; color: rgb(227, 27, 35);">&lt;% 
+   double num = Math.random();
+   if (num &gt; 0.95) {
+   %&gt;</span>
+      &lt;h2&gt;You'll have a luck day!&lt;/h2&gt;&lt;p&gt;(<span class="color-new" style="margin: 0px; padding: 0px; color: rgb(227, 27, 35);">&lt;%= num %&gt;</span>)&lt;/p&gt;
+   <span class="color-new" style="margin: 0px; padding: 0px; color: rgb(227, 27, 35);">&lt;%
+   } else {
+   %&gt;</span>
+      &lt;h2&gt;Well, life goes on ... &lt;/h2&gt;&lt;p&gt;(<span class="color-new" style="margin: 0px; padding: 0px; color: rgb(227, 27, 35);">&lt;%= num %&gt;</span>)&lt;/p&gt;
+   &lt;%
+   }
+   %&gt;
+   &lt;a href="<span class="color-new" style="margin: 0px; padding: 0px; color: rgb(227, 27, 35);">&lt;%= request.getRequestURI() %&gt;</span>"&gt;&lt;h3&gt;Try Again&lt;/h3&gt;&lt;/a&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre></div></div><div class="cell text-cell"><h1>8.</h1><div>
+		
+	
+	
+		<div class="page" title="Page 1">
+			<div class="layoutArea">
+				<div class="column">
+					<span style="font-size: 14pt; font-family: Calibri;">Briefly explain(in2-3shortsentences) what are JavaBeans in the server-side JSP? What
+are they used for?</span></div><div class="column">
+		
+	
+	
+		<div class="page" title="Page 2">
+			<div class="layoutArea">
+				<div class="column">
+					<p><span style="font-size: 14.000000pt; font-family: 'Calibri,Bold'; color: rgb(100.000000%, 0.000000%, 0.000000%)">Java Bean is a class that stores data and provides methods to perform some tasks or
+operations. The key purpose of using it in a JSP is to separate the programming
+codes/logic out of the JSP page so that it is easier to read and maintain.&nbsp;</span></p>
+				</div>
+			</div>
+		</div></div><div class="column"><ol>
+					</ol>
+				</div>
+			</div>
+		</div></div></div><div class="cell text-cell"><h1>9.</h1><div>
+		
+	
+	
+		<div class="page" title="Page 1">
+			<div class="layoutArea">
+				<div class="column">
+					<p>
+		
+	
+	
+		</p><div class="page" title="Page 1">
+			<div class="layoutArea">
+				<div class="column">
+					<span style="font-size: 14pt; font-family: Calibri;">WhatarethekeyadvantagesofusingTagLibrariesinyourJSPs?&nbsp;</span><br><ol>
+					</ol>
+				</div>
+			</div>
+		</div><div class="column"><font face="Calibri"><span style="font-size: 19px;">simple， readable， reusable，short code.</span></font></div><div class="column"><font face="Calibri"><span style="font-size: 19px;">When you need more than EL or standard action, or you need something to be repeated use. It all helps to&nbsp;separate</span></font></div><div class="column"><font face="Calibri"><span style="font-size: 19px;">script with JSP, easier to read and maintain.</span></font></div>
+				</div>
+			</div>
+		</div></div></div><div class="cell text-cell"><h1>10.</h1><div>
+		
+	
+	
+		<div class="page" title="Page 1">
+			<div class="layoutArea">
+				<div class="column">
+					<p><span style="font-size: 14.000000pt; font-family: 'Calibri'">What is JSTL, and what benefits does it provide?<br>
+</span></p><h3 style="font-size: 17px; margin: 0px; padding: 0px; line-height: 1.5em; color: rgb(0, 0, 0); font-family: 'Lucida Grande', Arial, Helvetica, sans-serif;">Automatic JavaBean Introspection Support</h3><div><h3 style="font-size: 17px; margin: 0px; padding: 0px; line-height: 1.5em; color: rgb(0, 0, 0); font-family: 'Lucida Grande', Arial, Helvetica, sans-serif;">Easier for Humans to Read</h3></div><div><h3 style="font-size: 17px; margin: 0px; padding: 0px; line-height: 1.5em; color: rgb(0, 0, 0); font-family: 'Lucida Grande', Arial, Helvetica, sans-serif;">Easier for Computers to Read</h3></div><div><h3 style="font-size: 17px; margin: 0px; padding: 0px; line-height: 1.5em; color: rgb(0, 0, 0); font-family: 'Lucida Grande', Arial, Helvetica, sans-serif;">Standardized Support for Formatting and I18N</h3></div>
+				</div>
+			</div>
+		</div></div></div><div class="cell text-cell">
+		
+	
+	
+		<div class="page" title="Page 1">
+			<div class="layoutArea">
+				<div class="column">
+					<h1><span style="font-size: 14.000000pt; font-family: 'Calibri'">11.</span></h1><p><span style="font-size: 14.000000pt; font-family: 'Calibri'">Practice writing simple JSTL code segments. For example,
+</span></p>
+					<p><span style="font-size: 14.000000pt; font-family: 'Calibri'">Write a segment of lines in a JSP page that uses JSTL to display all numbers between 0
+and 100 that are divisible by 4 onto a Web page as an un-ordered list (i.e.,
+&lt;UL&gt;results&lt;/UL&gt;).&nbsp;</span></p><p>&lt;% &nbsp;for (int i = 0; i &lt;= upToNumber; i++) {%&gt;</p><p>&lt;%= numberTo<span style="font-family: Calibri; font-size: 19px;">div</span>%&gt; / &lt;%= 4%&gt; = &nbsp;&lt;%= numberTo<span style="font-family: Calibri; font-size: 19px;">div/4</span>&nbsp;%&gt;</p><p>&nbsp;&lt;/br&gt;</p><p>&lt;% &nbsp;}%&gt;</p>
+				</div>
+			</div>
+		</div></div><div class="cell text-cell">
+		
+	
+	
+		<div class="page" title="Page 1">
+			<div class="layoutArea">
+				<div class="column">
+					<h1><span style="font-size: 14.000000pt; font-family: 'Calibri'">12.</span></h1><p><span style="font-size: 14.000000pt; font-family: 'Calibri'">What are the key advantages of using JSF?<br>
+</span></p><p><font face="Calibri"><span style="font-size: 19px;">custom gui control</span></font></p><p><font face="Calibri"><span style="font-size: 19px;">event handling</span></font></p><p><font face="Calibri"><span style="font-size: 19px;">managed beans</span></font></p><p><font face="Calibri"><span style="font-size: 19px;">expression language</span></font></p>
+				</div>
+			</div>
+		</div></div><div class="cell text-cell"><h1>13</h1><div>
+		
+	
+	
+		<div class="page" title="Page 1">
+			<div class="layoutArea">
+				<div class="column">
+					<p><span style="font-size: 14.000000pt; font-family: 'Calibri'">Briefly describe how page navigations work in JSF?<br>
+</span></p><p>define naviagation rules in faces-config.xml file.<br></p><p>connect every return string with a navigation rule.</p><p>give return string the ability of button or hyperlink action.</p>
+				</div>
+			</div>
+		</div></div></div><div class="cell text-cell"><h1>14.</h1><div>
+		
+	
+	
+		<div class="page" title="Page 1">
+			<div class="layoutArea">
+				<div class="column">
+					<p><span style="font-size: 14.000000pt; font-family: 'Calibri'">What is a JavaScript? How is it used in Web services?<br>
+</span></p><p><span style="color: rgb(25, 25, 25); font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 16px; background-color: rgb(255, 255, 255);">JavaScript is a&nbsp;</span><span style="font-family: Constantia;">Dynamic scripting language</span><span style="color: rgb(25, 25, 25); font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 16px; background-color: rgb(255, 255, 255);">&nbsp;language used to make web pages interactive.</span></p><p><span style="color: rgb(25, 25, 25); font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 16px; background-color: rgb(255, 255, 255);">&nbsp;runs on client side.</span></p><p>allows web pages to interact with clients asynchronously.</p><p><br></p><p>send asynchronous request from client to server</p><p>server send a reponse that update the page’s DOM</p>
+				</div>
+			</div>
+		</div></div></div><div class="cell text-cell"><h1>15.</h1><div>
+		
+	
+	
+		<div class="page" title="Page 1">
+			<div class="layoutArea">
+				<div class="column">
+					<p><span style="font-size: 14.000000pt; font-family: 'Calibri'">What is AJAX? How does it help to deliver better Web services?&nbsp;</span></p><p>
+		
+	
+	
+		</p><div class="page" title="Page 2">
+			<div class="section">
+				<div class="layoutArea">
+					<div class="column">
+						<p><span style="font-size: 11.000000pt; font-family: 'Constantia'">Asynchronous JavaScript and XML<br></span><span style="font-size: 10.000000pt; font-family: 'Constantia'">Technologies that allows creation of dynamic and highly&nbsp;</span><span style="font-family: Constantia; font-size: 10pt;">responsive web applications</span></p><p><span style="font-size: 10pt; font-family: Constantia;">Can retrieve new contents from the server without&nbsp;</span><span style="font-size: 10pt; font-family: Constantia;">affecting the rest of the Web page&nbsp;</span></p></div></div><div class="layoutArea"><div class="column"><p><span style="font-size: 10pt; font-family: Constantia;">Not limited to JavaScript and XML&nbsp;</span></p><div class="page" title="Page 2"><div class="section"><div class="layoutArea"><div class="column"><ul style="list-style-type: none"><li><p><br></p><p>form a real time.</p><p><font face="Constantia">partial update of web content(no page loading)</font></p><p><span style="font-size: 10.000000pt; font-family: 'Constantia'">Enhancedfunctionalitywebpages&nbsp;</span></p>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div></div></div>
+			</div>
+		</div>
+				</div>
+			</div>
+		</div></div></div><div class="cell text-cell"></div></div>
+  <script></script>
+</body>
+</html>
